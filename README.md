@@ -7,4 +7,3 @@ This project deploys a Flask ML model using:
 
 
 
-## Deployment Status: Testing CI/CD
