@@ -3,6 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
@@ -41,8 +42,7 @@ jobs:
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy $SERVICE \
-            --image $IMAGE:${{ github.sha }} \
+            --image $IMAGE:latest \
             --region $REGION \
             --platform managed \
-            --allow-unauthenticated \
-            --port 8080
+            --allow-unauthenticated
